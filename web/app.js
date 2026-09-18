@@ -1,12 +1,11 @@
-// Chaos-Agent Interactive Simulation State & Engine
+// Chaos-Agent Interactive Playground Engine
 
 const RECIPES = {
   network_jitter: {
-    code: 'RECIPE-01',
-    name: 'Latency Jitter & Packet Drops',
+    name: 'Network Jitter & Drops',
     defaultLatency: 1400,
     defaultRate: 35,
-    score: '87.5% RESILIENT',
+    score: '87.5%',
     vulnTag: '1 Vulnerability Detected',
     logs: [
       { type: 'info', text: '[00:00.00] Hooking into transport layer via network-relay proxy...' },
@@ -28,15 +27,14 @@ const RECIPES = {
     ]
   },
   schema_poisoning: {
-    code: 'RECIPE-02',
-    name: 'Adversarial Schema Poisoning',
+    name: 'Adversarial Schema Fuzz',
     defaultLatency: 200,
     defaultRate: 50,
-    score: '75.0% RESILIENT',
+    score: '75.0%',
     vulnTag: '2 Vulnerabilities Detected',
     logs: [
-      { type: 'info', text: '[00:00.00] Generating adversarial schema payloads for 6 registered MCP tools...' },
-      { type: 'chaos', text: '[00:00.22] INJECT: Injecting 64KB string buffer into string parameter "path"...' },
+      { type: 'info', text: '[00:00.00] Generating adversarial schema payloads for registered MCP tools...' },
+      { type: 'chaos', text: '[00:00.22] INJECT: Injecting 64KB string buffer into parameter "path"...' },
       { type: 'success', text: '[00:00.45] PASS: Schema validator truncated buffer at 4096 bytes cleanly.' },
       { type: 'chaos', text: '[00:00.60] INJECT: Passing NaN and cyclic object to "query" parameter...' },
       { type: 'error', text: '[00:00.68] CRITICAL: JSON.stringify threw TypeError: Converting circular structure to JSON.' },
@@ -61,11 +59,10 @@ const RECIPES = {
     ]
   },
   cascade_outage: {
-    code: 'RECIPE-03',
-    name: 'Upstream 504 & 429 Cascade',
+    name: 'Upstream 504 / 429 Surge',
     defaultLatency: 2200,
     defaultRate: 60,
-    score: '91.7% RESILIENT',
+    score: '91.7%',
     vulnTag: '1 Vulnerability Detected',
     logs: [
       { type: 'info', text: '[00:00.00] Simulating sudden upstream rate-limiting across 10 concurrent agent tasks...' },
@@ -87,11 +84,10 @@ const RECIPES = {
     ]
   },
   recursion_trap: {
-    code: 'RECIPE-04',
-    name: 'Subagent Circular Deadlock',
+    name: 'Subagent Recursion Trap',
     defaultLatency: 600,
     defaultRate: 40,
-    score: '83.3% RESILIENT',
+    score: '83.3%',
     vulnTag: '1 Vulnerability Detected',
     logs: [
       { type: 'info', text: '[00:00.00] Testing recursive subagent spawn boundaries with depth test suite...' },
@@ -114,7 +110,7 @@ const RECIPES = {
   }
 };
 
-let currentRecipeKey = 'network_jitter';
+let currentRecipe = 'network_jitter';
 let isRunning = false;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -122,19 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSliders();
   setupIntensity();
   setupConfigTabs();
-  setupRunButton();
+  setupExecuteButton();
 });
 
 function setupRecipes() {
-  const cards = document.querySelectorAll('.recipe-card');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      cards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      currentRecipeKey = card.dataset.recipe;
-      const recipe = RECIPES[currentRecipeKey];
+  const pills = document.querySelectorAll('.recipe-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentRecipe = pill.dataset.recipe;
+      const recipe = RECIPES[currentRecipe];
       
-      // Update sliders
       document.getElementById('input-latency').value = recipe.defaultLatency;
       document.getElementById('val-latency').textContent = `${recipe.defaultLatency.toLocaleString()} ms`;
       document.getElementById('input-rate').value = recipe.defaultRate;
@@ -159,7 +154,7 @@ function setupSliders() {
 }
 
 function setupIntensity() {
-  const btns = document.querySelectorAll('.btn-intensity');
+  const btns = document.querySelectorAll('.int-btn');
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       btns.forEach(b => b.classList.remove('active'));
@@ -168,85 +163,78 @@ function setupIntensity() {
   });
 }
 
-function setupRunButton() {
-  const btn = document.getElementById('btn-run-chaos');
+function setupExecuteButton() {
+  const btn = document.getElementById('btn-execute-chaos');
   btn.addEventListener('click', () => {
     if (isRunning) return;
-    executeChaosRun();
+    runChaosExecution();
   });
 }
 
-function executeChaosRun() {
+function runChaosExecution() {
   isRunning = true;
-  const stateBadge = document.getElementById('sim-state-badge');
-  const runText = document.getElementById('run-text');
-  const termBody = document.getElementById('terminal-body');
+  const btnText = document.getElementById('btn-execute-text');
+  const feed = document.getElementById('terminal-feed');
 
-  stateBadge.textContent = 'EXECUTING';
-  stateBadge.className = 'panel-state running';
-  runText.textContent = '⏳ INJECTING FAULTS...';
-  termBody.innerHTML = '';
+  btnText.textContent = '⏳ INJECTING FAULTS...';
+  feed.innerHTML = '';
 
-  const recipe = RECIPES[currentRecipeKey];
+  const recipe = RECIPES[currentRecipe];
   let logIndex = 0;
 
   const interval = setInterval(() => {
     if (logIndex < recipe.logs.length) {
       const log = recipe.logs[logIndex];
       const line = document.createElement('div');
-      line.className = `log-line ${log.type}`;
+      line.className = `feed-line ${log.type}`;
       line.textContent = log.text;
-      termBody.appendChild(line);
-      termBody.scrollTop = termBody.scrollHeight;
+      feed.appendChild(line);
+      feed.scrollTop = feed.scrollHeight;
       logIndex++;
     } else {
       clearInterval(interval);
       isRunning = false;
-      stateBadge.textContent = 'COMPLETE';
-      stateBadge.className = 'panel-state';
-      runText.textContent = '⚡ EXECUTE CHAOS ATTACK SUITE';
+      btnText.textContent = '⚡ Run Chaos Attack Suite';
       loadRecipeOutput(recipe);
     }
   }, 400);
 }
 
 function loadRecipeOutput(recipe) {
-  // Update Scorecard
-  document.getElementById('score-badge').textContent = recipe.score;
-  document.getElementById('vuln-count-tag').textContent = recipe.vulnTag;
+  document.getElementById('score-number').textContent = recipe.score;
+  document.getElementById('vuln-indicator').textContent = recipe.vulnTag;
 
-  // Render Findings
-  const container = document.getElementById('findings-list');
+  const container = document.getElementById('findings-feed');
   container.innerHTML = '';
 
   recipe.findings.forEach(f => {
     const el = document.createElement('div');
-    el.className = 'finding-item';
+    el.className = 'finding-card';
     el.innerHTML = `
-      <div class="finding-top">
-        <span class="severity-badge ${f.severity}">${f.severity.toUpperCase()} SEVERITY</span>
-        <span class="finding-tool">Tool: ${f.tool}</span>
+      <div class="finding-header">
+        <span class="vuln-tag ${f.severity}">${f.severity.toUpperCase()} SEVERITY</span>
+        <span class="vuln-target">Tool: ${f.tool}</span>
       </div>
-      <h4 class="finding-title">${f.title}</h4>
-      <p class="finding-desc">${f.desc}</p>
-      <div class="finding-remedy">
-        <span class="remedy-label">Remediation:</span> ${f.remedy}
+      <h4 class="finding-headline">${f.title}</h4>
+      <p class="finding-text">${f.desc}</p>
+      <div class="remediation-box">
+        <span class="remediation-label">Fix:</span> ${f.remedy}
       </div>
     `;
     container.appendChild(el);
   });
 }
 
-window.clearLogs = function() {
-  document.getElementById('terminal-body').innerHTML = '<div class="log-line info">[00:00.00] Terminal logs cleared. Ready for next test run.</div>';
+window.clearTerminal = function() {
+  document.getElementById('terminal-feed').innerHTML = '<div class="feed-line info">[00:00.00] Terminal feed cleared. Ready for next test run.</div>';
 };
 
 function setupConfigTabs() {
   const tabs = document.querySelectorAll('.config-tab');
-  const snippet = document.getElementById('code-snippet');
+  const snippet = document.getElementById('code-content');
 
   const configs = {
-    cli: `# Run autonomous chaos suite against any MCP server
+    cli: `# Run pre-flight chaos test suite
 npx chaos-agent test --target ./my-mcp-server --severity aggressive
 
 # Export JUnit / JSON test resilience scorecard
@@ -296,13 +284,13 @@ const report = await runner.runSuite({
 }
 
 window.copyCli = function() {
-  navigator.clipboard.writeText('npx chaos-agent test --target ./my-mcp-server').then(() => {
+  navigator.clipboard.writeText('npx chaos-agent test --target ./my-server').then(() => {
     alert('Copied CLI command to clipboard!');
   });
 };
 
 window.copySnippet = function() {
-  const code = document.getElementById('code-snippet').textContent;
+  const code = document.getElementById('code-content').textContent;
   navigator.clipboard.writeText(code).then(() => {
     alert('Code snippet copied to clipboard!');
   });
