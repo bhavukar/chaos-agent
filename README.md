@@ -1,6 +1,6 @@
-#  Chaos-Agent
+# Havoc
 
-> **Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol (MCP) & Autonomous AI Agent Loops.**
+> **Autonomous AI QA & Chaos Resilience Testing Engine for Distributed Tool Pipelines.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -8,11 +8,11 @@
 
 ---
 
-##  What is Chaos-Agent?
+## What is Havoc?
 
 AI agents in production face hostile, unpredictable environments: third-party APIs fail with `HTTP 504 Gateway Timeout`, rate limits trigger sudden `HTTP 429 Too Many Requests`, edge connections drop packets, and LLMs hallucinate malformed tool arguments.
 
-**Chaos-Agent** brings **Chaos Engineering to the Model Context Protocol (MCP)**. It acts as an autonomous QA fuzzer that injects synthetic network jitter, socket drops, type-poisoned payloads, and circular subagent recursion traps into your agent pipeline to discover fatal bugs *before* your users do.
+**Havoc** brings **Chaos Engineering to the Model Context Protocol (MCP)**. It acts as an autonomous QA fuzzer that injects synthetic network jitter, socket drops, type-poisoned payloads, and circular subagent recursion traps into your agent pipeline to discover fatal bugs *before* your users do.
 
 ```mermaid
 flowchart TD
@@ -30,21 +30,21 @@ flowchart TD
 
 ---
 
-##  Core Features
+## Core Features
 
--  **Network-Relay Emulation**: Simulates real-world network instability (800ms–2500ms latency spikes, socket resets, bandwidth throttling) by bridging with [`network-relay`](https://github.com/bhavukar/network-relay).
--  **Adversarial Schema Fuzzing**: Automatically mutates MCP tool input schemas with NaN values, 64KB string overflows, Unicode control characters, and malformed JSON envelopes.
--  **Cascade Outage Verification**: Tests whether your agent gracefully fails over to cached responses or secondary replicas during upstream HTTP 504 and 429 surges.
--  **Subagent Deadlock Detection**: Identifies circular agent invocation loops and runaway memory context growth before token quotas are drained.
--  **Automated Resilience Scorecards**: Generates JUnit / JSON vulnerability reports with actionable code remediation instructions.
+- **Network-Relay Emulation**: Simulates real-world network instability (800ms–2500ms latency spikes, socket resets, bandwidth throttling) by bridging with [`network-relay`](https://github.com/bhavukar/network-relay).
+- **Adversarial Schema Fuzzing**: Automatically mutates MCP tool input schemas with NaN values, 64KB string overflows, Unicode control characters, and malformed JSON envelopes.
+- **Cascade Outage Verification**: Tests whether your agent gracefully fails over to cached responses or secondary replicas during upstream HTTP 504 and 429 surges.
+- **Subagent Deadlock Detection**: Identifies circular agent invocation loops and runaway memory context growth before token quotas are drained.
+- **Automated Resilience Scorecards**: Generates JUnit / JSON vulnerability reports with actionable code remediation instructions.
 
 ---
 
-##  Quickstart
+## Quickstart
 
 ### 1. Run Pre-Flight Chaos Suite via CLI
 ```bash
-npx chaos-agent test --target ./my-mcp-server --severity aggressive
+npx havoc test --target ./my-mcp-server --severity aggressive
 ```
 
 ### 2. Add to GitHub Actions CI/CD Pipeline
@@ -59,12 +59,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Autonomous Chaos Fuzzing
         run: |
-          npx chaos-agent test --target ./src/server.ts --fail-threshold 80
+          npx havoc test --target ./src/server.ts --fail-threshold 80
 ```
 
 ### 3. Programmatic Node.js SDK
 ```typescript
-import { ChaosRunner, SchemaFuzzer } from 'chaos-agent';
+import { ChaosRunner, SchemaFuzzer } from 'havoc-engine';
 
 const runner = new ChaosRunner();
 const report = await runner.runSuite({
@@ -82,9 +82,9 @@ console.log(`Resilience Score: ${report.resilienceScore}%`);
 
 ---
 
-##  Interactive Web Landing Page
+## Interactive Web Landing Page
 
-The project includes an interactive web demo inspired by editorial catalog design (`collagecrafting.com/en`).
+The project includes an interactive web demo inspired by Cuberto digital architecture with pill buttons and chaos attack playground.
 
 To launch the web interface locally:
 ```bash
@@ -94,6 +94,6 @@ npx serve web
 
 ---
 
-##  License
+## License
 
-MIT License © 2026 Bhavuk Arora
+MIT License (c) 2026 Bhavuk Arora

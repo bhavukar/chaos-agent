@@ -1,10 +1,11 @@
 {
-  "name": "chaos-agent",
+  "name": "havoc-engine",
   "version": "0.1.0",
   "type": "module",
-  "description": "Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol (MCP) & AI Agent Loops",
+  "description": "Autonomous AI QA & Chaos Resilience Hunter for Distributed Tool Pipelines",
   "main": "dist/index.js",
   "bin": {
+    "havoc": "./bin/havoc.js",
     "chaos-agent": "./bin/chaos-agent.js"
   },
   "scripts": {
