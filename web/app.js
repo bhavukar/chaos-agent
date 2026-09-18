@@ -235,12 +235,12 @@ function setupConfigTabs() {
 
   const configs = {
     cli: `# Run pre-flight chaos test suite
-npx chaos-agent test --target ./my-mcp-server --severity aggressive
+npx havoc test --target ./my-server --severity aggressive
 
 # Export JUnit / JSON test resilience scorecard
-npx chaos-agent test --output report.json`,
-    ci: `# .github/workflows/mcp-chaos-test.yml
-name: MCP Resilience Test
+npx havoc test --output report.json`,
+    ci: `# .github/workflows/havoc-test.yml
+name: Autonomous Resilience Test
 on: [push, pull_request]
 
 jobs:
@@ -248,23 +248,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run Autonomous Chaos Fuzzing
+      - name: Run Havoc Resilience Fuzzing
         run: |
-          npx chaos-agent test --target ./src/server.ts --fail-threshold 80`,
+          npx havoc test --target ./src/server.ts --fail-threshold 80`,
     relay: `// Integration with Network-Relay for realistic transport latency & drops
-import { ChaosRunner } from 'chaos-agent';
+import { HavocRunner } from 'havoc-core';
 import { NetworkRelayProxy } from 'network-relay';
 
 const relay = new NetworkRelayProxy({ jitterMs: 800, dropRate: 0.15 });
-const runner = new ChaosRunner({ transport: relay });
+const runner = new HavocRunner({ transport: relay });
 
 const report = await runner.runSuite({ severity: 'aggressive' });
 console.log('Resilience Score:', report.resilienceScore);`,
-    sdk: `import { ChaosRunner, SchemaFuzzer } from 'chaos-agent';
+    sdk: `import { HavocRunner, SchemaFuzzer } from 'havoc-core';
 
-const runner = new ChaosRunner();
+const runner = new HavocRunner();
 const report = await runner.runSuite({
-  id: 'custom-mcp-suite',
+  id: 'custom-tool-suite',
   name: 'Production Pre-Flight',
   severity: 'aggressive',
   faults: [
@@ -284,8 +284,8 @@ const report = await runner.runSuite({
 }
 
 window.copyCli = function() {
-  navigator.clipboard.writeText('npx chaos-agent test --target ./my-server').then(() => {
-    alert('Copied CLI command to clipboard.');
+  navigator.clipboard.writeText('npx havoc test --target ./my-server').then(() => {
+    alert('Copied "npx havoc test" to clipboard.');
   });
 };
 
