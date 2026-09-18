@@ -176,7 +176,7 @@ function runChaosExecution() {
   const btnText = document.getElementById('btn-execute-text');
   const feed = document.getElementById('terminal-feed');
 
-  btnText.textContent = '⏳ INJECTING FAULTS...';
+  btnText.textContent = 'Injecting Faults...';
   feed.innerHTML = '';
 
   const recipe = RECIPES[currentRecipe];
@@ -194,7 +194,7 @@ function runChaosExecution() {
     } else {
       clearInterval(interval);
       isRunning = false;
-      btnText.textContent = '⚡ Run Chaos Attack Suite';
+      btnText.textContent = 'Run Chaos Attack Suite';
       loadRecipeOutput(recipe);
     }
   }, 400);
@@ -285,13 +285,13 @@ const report = await runner.runSuite({
 
 window.copyCli = function() {
   navigator.clipboard.writeText('npx chaos-agent test --target ./my-server').then(() => {
-    alert('Copied CLI command to clipboard!');
+    alert('Copied CLI command to clipboard.');
   });
 };
 
 window.copySnippet = function() {
   const code = document.getElementById('code-content').textContent;
   navigator.clipboard.writeText(code).then(() => {
-    alert('Code snippet copied to clipboard!');
+    alert('Code snippet copied to clipboard.');
   });
 };

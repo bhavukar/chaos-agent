@@ -1,4 +1,4 @@
-# 💥 Chaos-Agent
+#  Chaos-Agent
 
 > **Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol (MCP) & Autonomous AI Agent Loops.**
 
@@ -8,7 +8,7 @@
 
 ---
 
-## ⚡ What is Chaos-Agent?
+##  What is Chaos-Agent?
 
 AI agents in production face hostile, unpredictable environments: third-party APIs fail with `HTTP 504 Gateway Timeout`, rate limits trigger sudden `HTTP 429 Too Many Requests`, edge connections drop packets, and LLMs hallucinate malformed tool arguments.
 
@@ -30,17 +30,17 @@ flowchart TD
 
 ---
 
-## ✨ Core Features
+##  Core Features
 
-- 🌪️ **Network-Relay Emulation**: Simulates real-world network instability (800ms–2500ms latency spikes, socket resets, bandwidth throttling) by bridging with [`network-relay`](https://github.com/bhavukar/network-relay).
-- 🧪 **Adversarial Schema Fuzzing**: Automatically mutates MCP tool input schemas with NaN values, 64KB string overflows, Unicode control characters, and malformed JSON envelopes.
-- ⚡ **Cascade Outage Verification**: Tests whether your agent gracefully fails over to cached responses or secondary replicas during upstream HTTP 504 and 429 surges.
-- 🔄 **Subagent Deadlock Detection**: Identifies circular agent invocation loops and runaway memory context growth before token quotas are drained.
-- 📋 **Automated Resilience Scorecards**: Generates JUnit / JSON vulnerability reports with actionable code remediation instructions.
+-  **Network-Relay Emulation**: Simulates real-world network instability (800ms–2500ms latency spikes, socket resets, bandwidth throttling) by bridging with [`network-relay`](https://github.com/bhavukar/network-relay).
+-  **Adversarial Schema Fuzzing**: Automatically mutates MCP tool input schemas with NaN values, 64KB string overflows, Unicode control characters, and malformed JSON envelopes.
+-  **Cascade Outage Verification**: Tests whether your agent gracefully fails over to cached responses or secondary replicas during upstream HTTP 504 and 429 surges.
+-  **Subagent Deadlock Detection**: Identifies circular agent invocation loops and runaway memory context growth before token quotas are drained.
+-  **Automated Resilience Scorecards**: Generates JUnit / JSON vulnerability reports with actionable code remediation instructions.
 
 ---
 
-## 🚀 Quickstart
+##  Quickstart
 
 ### 1. Run Pre-Flight Chaos Suite via CLI
 ```bash
@@ -82,7 +82,7 @@ console.log(`Resilience Score: ${report.resilienceScore}%`);
 
 ---
 
-## 🌐 Interactive Web Landing Page
+##  Interactive Web Landing Page
 
 The project includes an interactive web demo inspired by editorial catalog design (`collagecrafting.com/en`).
 
@@ -94,6 +94,6 @@ npx serve web
 
 ---
 
-## 📜 License
+##  License
 
 MIT License © 2026 Bhavuk Arora
