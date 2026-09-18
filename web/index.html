@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaos-Agent — Autonomous AI QA & Resilience Hunter for MCP</title>
+  <meta name="description" content="Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol (MCP) & AI Agent Loops. Stress test against network faults, schema mutations, and timeout cascades." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-group">
+        <img src="assets/logo.svg" alt="Chaos-Agent Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">CHAOS-AGENT</span>
+          <span class="catalog-badge">[SPEC-03 // QA-ENGINE]</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#workbench" class="nav-link">Chaos Workbench</a>
+        <a href="#catalog" class="nav-link">Fault Catalog</a>
+        <a href="#integration" class="nav-link">Integration</a>
+        <a href="https://github.com/bhavukar/network-relay" target="_blank" rel="noopener" class="nav-link relay-link">
+          <span class="dot-amber"></span>
+          <span>Network-Relay Bridge</span>
+        </a>
+        <a href="https://github.com/bhavukar/chaos-agent" target="_blank" rel="noopener" class="btn-github">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="spec-tag">
+          <span class="tag-hash">#</span>
+          <span>AUTONOMOUS RESILIENCE HUNTER & CHAOS TESTING FOR LLMS</span>
+        </div>
+
+        <h1 class="hero-title">
+          Autonomous AI QA & Chaos Resilience Hunter for MCP.
+        </h1>
+
+        <p class="hero-subtitle">
+          Expose unhandled async timeouts, corrupted tool schemas, runaway recursion loops, and upstream cascade failures before your agents hit production.
+        </p>
+
+        <div class="hero-actions">
+          <div class="cli-box">
+            <span class="cli-prompt">$</span>
+            <span class="cli-text">npx chaos-agent test --target ./my-mcp-server</span>
+            <button class="copy-btn" onclick="copyCli()" title="Copy command">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+          <a href="#workbench" class="btn-primary">Launch Chaos Simulator ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Tape -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>CHAOS RESILIENCE HUNTER</span>
+        <span class="sep">✦</span>
+        <span>NETWORK-RELAY INTEGRATION</span>
+        <span class="sep">✦</span>
+        <span>ADVERSARIAL SCHEMA FUZZING</span>
+        <span class="sep">✦</span>
+        <span>504 TIMEOUT RECOVERY</span>
+        <span class="sep">✦</span>
+        <span>SUBAGENT RECURSION TRAP DETECTION</span>
+        <span class="sep">✦</span>
+        <span>CHAOS RESILIENCE HUNTER</span>
+        <span class="sep">✦</span>
+        <span>NETWORK-RELAY INTEGRATION</span>
+        <span class="sep">✦</span>
+        <span>ADVERSARIAL SCHEMA FUZZING</span>
+        <span class="sep">✦</span>
+      </div>
+    </div>
+
+    <!-- Interactive Chaos Workbench -->
+    <section id="workbench" class="workbench-section">
+      <div class="workbench-container">
+        <div class="section-meta">
+          <span class="section-tag">[INTERACTIVE SIMULATOR]</span>
+          <h2 class="section-title">Stress-Test Agent Architecture Under Chaos</h2>
+          <p class="section-desc">Select an attack recipe below, adjust fault injection parameters, and execute live autonomous fuzzing.</p>
+        </div>
+
+        <!-- Recipe Selector Cards -->
+        <div class="recipes-grid">
+          <div class="recipe-card active" data-recipe="network_jitter">
+            <div class="recipe-header">
+              <span class="recipe-code">RECIPE-01</span>
+              <span class="recipe-badge network">NETWORK-RELAY</span>
+            </div>
+            <h3 class="recipe-name">Latency Jitter & Packet Drops</h3>
+            <p class="recipe-desc">Injects irregular 800ms–2400ms network jitter and 20% socket connection resets into tool calls.</p>
+          </div>
+
+          <div class="recipe-card" data-recipe="schema_poisoning">
+            <div class="recipe-header">
+              <span class="recipe-code">RECIPE-02</span>
+              <span class="recipe-badge schema">SCHEMA FUZZ</span>
+            </div>
+            <h3 class="recipe-name">Adversarial Schema Poisoning</h3>
+            <p class="recipe-desc">Fuzzes tool inputs with NaN, 64KB string buffers, cyclic JSON objects, and null bytes.</p>
+          </div>
+
+          <div class="recipe-card" data-recipe="cascade_outage">
+            <div class="recipe-header">
+              <span class="recipe-code">RECIPE-03</span>
+              <span class="recipe-badge outage">CASCADE</span>
+            </div>
+            <h3 class="recipe-name">Upstream 504 & 429 Cascade</h3>
+            <p class="recipe-desc">Simulates sudden rate-limiting and gateway timeouts to test backoff retries and fallback replica routing.</p>
+          </div>
+
+          <div class="recipe-card" data-recipe="recursion_trap">
+            <div class="recipe-header">
+              <span class="recipe-code">RECIPE-04</span>
+              <span class="recipe-badge recursion">RECURSION</span>
+            </div>
+            <h3 class="recipe-name">Subagent Circular Deadlock</h3>
+            <p class="recipe-desc">Spawns cyclic subagent dependencies to test recursion depth limits and memory context guardrails.</p>
+          </div>
+        </div>
+
+        <!-- Simulator Controls & Output Split -->
+        <div class="simulator-workspace">
+          <!-- Left Control Panel -->
+          <div class="sim-config-panel">
+            <div class="panel-header">
+              <span class="panel-title">FAULT INJECTION CONTROLS</span>
+              <span class="panel-state" id="sim-state-badge">READY</span>
+            </div>
+
+            <!-- Slider 1: Latency -->
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span class="slider-name">INJECTED LATENCY JITTER</span>
+                <span class="slider-value" id="val-latency">1,400 ms</span>
+              </div>
+              <input type="range" id="input-latency" min="0" max="3000" step="100" value="1400" class="sim-slider" />
+            </div>
+
+            <!-- Slider 2: Fault Rate -->
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span class="slider-name">FAULT INJECTION PROBABILITY</span>
+                <span class="slider-value" id="val-rate">35 %</span>
+              </div>
+              <input type="range" id="input-rate" min="5" max="95" step="5" value="35" class="sim-slider" />
+            </div>
+
+            <!-- Intensity Mode Buttons -->
+            <div class="intensity-group">
+              <span class="slider-name">CHAOS SEVERITY</span>
+              <div class="intensity-buttons">
+                <button class="btn-intensity" data-mode="moderate">Moderate</button>
+                <button class="btn-intensity active" data-mode="aggressive">Aggressive</button>
+                <button class="btn-intensity" data-mode="nuclear">Nuclear</button>
+              </div>
+            </div>
+
+            <!-- Run Test Button -->
+            <button class="btn-run-chaos" id="btn-run-chaos">
+              <span id="run-text">⚡ EXECUTE CHAOS ATTACK SUITE</span>
+            </button>
+          </div>
+
+          <!-- Right Terminal & Findings Panel -->
+          <div class="sim-results-panel">
+            <!-- Terminal Output -->
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <span class="terminal-title">LIVE CHAOS EXECUTION STREAM</span>
+                <button class="term-clear" onclick="clearLogs()">Clear</button>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <div class="log-line info">[00:00.00] Chaos runner initialized on target: @modelcontextprotocol/server-postgres</div>
+                <div class="log-line info">[00:00.12] Ready to inject Recipe 01: Latency Jitter & Socket Resets...</div>
+              </div>
+            </div>
+
+            <!-- Vulnerability Scorecard -->
+            <div class="scorecard-box">
+              <div class="scorecard-header">
+                <div class="score-pill-group">
+                  <span class="score-label">RESILIENCE SCORE:</span>
+                  <span class="score-badge" id="score-badge">87.5% RESILIENT</span>
+                </div>
+                <span class="vuln-count-tag" id="vuln-count-tag">1 Vulnerability Detected</span>
+              </div>
+
+              <div class="findings-list" id="findings-list">
+                <div class="finding-item">
+                  <div class="finding-top">
+                    <span class="severity-badge high">HIGH SEVERITY</span>
+                    <span class="finding-tool">Tool: execute_sql</span>
+                  </div>
+                  <h4 class="finding-title">Unhandled ETIMEDOUT on Latency Spikes > 1200ms</h4>
+                  <p class="finding-desc">The agent failed to trigger exponential retry backoff and crashed with an unhandled promise rejection.</p>
+                  <div class="finding-remedy">
+                    <span class="remedy-label">Remediation:</span> Configure <code>maxRetries: 3</code> with jitter backoff via <code>network-relay</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Spec Matrix Grid (Inspired by collagecrafting.com/en) -->
+    <section id="catalog" class="catalog-section">
+      <div class="catalog-container">
+        <div class="section-meta">
+          <span class="section-tag">[CATALOG SPECIFICATIONS]</span>
+          <h2 class="section-title">Resilience Engineering Matrix</h2>
+        </div>
+
+        <div class="catalog-grid">
+          <div class="spec-card">
+            <span class="spec-num">[SPEC-01]</span>
+            <h3 class="spec-title">Network-Relay Emulation</h3>
+            <p class="spec-desc">Simulate realistic edge network conditions: variable 4G jitter, cross-region packet drop, and bandwidth throttling.</p>
+            <div class="spec-footer">
+              <span class="spec-pill">SOCKET FAULTS</span>
+              <span class="spec-pill">BANDWIDTH THROTTLE</span>
+            </div>
+          </div>
+
+          <div class="spec-card">
+            <span class="spec-num">[SPEC-02]</span>
+            <h3 class="spec-title">Adversarial Schema Fuzzing</h3>
+            <p class="spec-desc">Exhaustively test MCP JSON-RPC parameter boundaries with massive strings, NaN numbers, and Unicode directional attacks.</p>
+            <div class="spec-footer">
+              <span class="spec-pill">JSON-RPC 2.0</span>
+              <span class="spec-pill">AST MUTATION</span>
+            </div>
+          </div>
+
+          <div class="spec-card">
+            <span class="spec-num">[SPEC-03]</span>
+            <h3 class="spec-title">Cascade Outage Recovery</h3>
+            <p class="spec-desc">Verify that your agent loop fails over to cached responses or secondary replicas during upstream HTTP 504 and 429 surges.</p>
+            <div class="spec-footer">
+              <span class="spec-pill">RATE LIMITING</span>
+              <span class="spec-pill">FALLBACK DB</span>
+            </div>
+          </div>
+
+          <div class="spec-card">
+            <span class="spec-num">[SPEC-04]</span>
+            <h3 class="spec-title">Subagent Recursion Guard</h3>
+            <p class="spec-desc">Detect cyclic subagent spawning loops and runaway context explosions before they consume your entire LLM token quota.</p>
+            <div class="spec-footer">
+              <span class="spec-pill">RECURSION LIMIT</span>
+              <span class="spec-pill">TOKEN GUARD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section id="integration" class="integration-section">
+      <div class="integration-container">
+        <div class="section-meta text-center">
+          <span class="section-tag">[CI/CD & WORKFLOW INTEGRATION]</span>
+          <h2 class="section-title">Automate Resilience in Your Pipeline</h2>
+        </div>
+
+        <div class="config-tabs">
+          <button class="config-tab active" data-tab="cli">CLI Runner</button>
+          <button class="config-tab" data-tab="ci">GitHub Actions CI</button>
+          <button class="config-tab" data-tab="relay">Network-Relay Hook</button>
+          <button class="config-tab" data-tab="sdk">Node.js SDK</button>
+        </div>
+
+        <div class="code-box">
+          <pre><code id="code-snippet"># Run autonomous chaos suite against any MCP server
+npx chaos-agent test --target ./my-mcp-server --severity aggressive
+
+# Export JUnit / JSON test resilience scorecard
+npx chaos-agent test --output report.json</code></pre>
+          <button class="copy-btn copy-code-btn" onclick="copySnippet()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Tape 2 -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>CHAOS-AGENT</span>
+        <span class="sep">✦</span>
+        <span>OPEN SOURCE MIT LICENSE</span>
+        <span class="sep">✦</span>
+        <span>TEST BEFORE YOU SHIP</span>
+        <span class="sep">✦</span>
+        <span>PRODUCTION-READY MCP RESILIENCE</span>
+        <span class="sep">✦</span>
+        <span>CHAOS-AGENT</span>
+        <span class="sep">✦</span>
+        <span>OPEN SOURCE MIT LICENSE</span>
+        <span class="sep">✦</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="Chaos-Agent Logo" class="footer-logo" />
+        <span class="footer-name">CHAOS-AGENT</span>
+        <p class="footer-text">Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol & AI Agents.</p>
+      </div>
+      <div class="footer-nav">
+        <a href="https://github.com/bhavukar/chaos-agent" target="_blank" rel="noopener">GitHub Repository</a>
+        <a href="https://github.com/bhavukar/network-relay" target="_blank" rel="noopener">Network-Relay</a>
+        <a href="https://github.com/bhavukar/mcp-shield" target="_blank" rel="noopener">MCP-Shield</a>
+        <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">MCP Documentation</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bhavuk Arora. Open-source under MIT License.</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

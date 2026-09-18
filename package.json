@@ -1,0 +1,36 @@
+{
+  "name": "chaos-agent",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Autonomous AI QA & Chaos Resilience Hunter for Model Context Protocol (MCP) & AI Agent Loops",
+  "main": "dist/index.js",
+  "bin": {
+    "chaos-agent": "./bin/chaos-agent.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "chaos-engineering",
+    "qa",
+    "fuzzer",
+    "resilience",
+    "testing",
+    "claude",
+    "cursor"
+  ],
+  "author": "Bhavuk Arora",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}
