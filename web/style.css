@@ -73,7 +73,13 @@ body {
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.5rem;
+}
+
+.nav-links-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .nav-link {
@@ -750,13 +756,188 @@ body {
   color: var(--text-muted);
 }
 
-/* Responsive */
+/* Comprehensive Responsive Optimization for Phone & Tablet */
 @media (max-width: 1024px) {
-  .workbench-card { grid-template-columns: 1fr; }
-  .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+  .workbench-card {
+    grid-template-columns: 1fr;
+  }
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4.5rem 1.25rem 3.5rem;
+  }
+  .playground-section,
+  .showcase-section,
+  .integration-section {
+    padding: 4rem 1.25rem;
+  }
+  .workbench-card {
+    padding: 1.5rem 1.25rem;
+  }
 }
 
 @media (max-width: 640px) {
-  .showcase-grid { grid-template-columns: 1fr; }
-  .nav { display: none; }
+  .nav-container {
+    padding: 0.85rem 1rem;
+  }
+
+  .nav-links-group {
+    display: none;
+  }
+
+  .btn-github {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    padding: 3.5rem 1rem 2.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8.5vw, 2.85rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .cli-box {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 0.7rem 1rem;
+    box-shadow: 2px 2px 0px var(--text-main);
+  }
+
+  .btn-pill-primary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.25rem;
+  }
+
+  .recipes-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .recipes-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .recipe-pill {
+    flex-shrink: 0;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .workbench-card {
+    padding: 1.15rem;
+    gap: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .control-card {
+    padding: 1rem;
+  }
+
+  .intensity-switch {
+    gap: 0.3rem;
+  }
+
+  .int-btn {
+    padding: 0.55rem 0.4rem;
+    font-size: 0.72rem;
+  }
+
+  .btn-execute-chaos {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.88rem;
+    width: 100%;
+  }
+
+  .scorecard-shell {
+    padding: 1.15rem;
+  }
+
+  .scorecard-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .showcase-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .config-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .config-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .config-tab {
+    flex-shrink: 0;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .code-box {
+    padding: 1.25rem 1rem;
+    box-shadow: 3px 3px 0px var(--text-main);
+  }
+
+  .code-box pre {
+    font-size: 0.76rem;
+  }
+
+  .footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
 }
